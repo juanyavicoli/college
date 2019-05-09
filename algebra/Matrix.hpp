@@ -67,6 +67,9 @@ class Matrix
         static Matrix       identity(unsigned int size);
     private:
         Vector<Row>         m_values;
+
+        unsigned int        m_rows;
+        unsigned int        m_cols;
 };
 
 Matrix operator+(Matrix lhs, Matrix rhs);
