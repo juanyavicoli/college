@@ -1,2 +1,2 @@
-# college
-Bunch of academic/learning projects made in several languages
+# College
+Group of learning projects i have (or am) developed during my university years, used to practice my programming skills.
