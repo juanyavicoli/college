@@ -1,0 +1,205 @@
+#include "Matrix.hpp"
+
+Matrix::Matrix(Matrix::Vector<Matrix::Row> values)
+{
+    if (values.size() == 0)
+        throw std::invalid_argument("");
+
+    unsigned int first_row_size = values[0].size();
+
+    for (const auto& row : values)
+    {
+        if (row.size() == 0)
+            throw std::invalid_argument("");
+
+        if (row.size() != first_row_size)
+            throw Matrix::AsymmetryError();
+    }
+
+    m_values = values;
+    m_rows = values.size();
+    m_cols = first_row_size;
+}
+
+Matrix
+Matrix::operator+=(Matrix other)
+{
+    if (rows() != other.rows() || cols() != other.cols())
+        throw Matrix::AsymmetryError();
+
+    Matrix::Row row_values;
+    Matrix::Vector<Matrix::Row> result_values;
+
+    for (auto y = 0; y < rows(); ++y)
+    {
+        for (auto x = 0; x < cols(); ++x)
+        {
+            row_values.push_back(m_values[y][x] + other.m_values[y][x]);
+        }
+
+        result_values.push_back(row_values);
+        row_values.clear();
+    }
+
+    m_values = result_values;
+
+    return *this;
+}
+
+Matrix
+Matrix::operator-=(Matrix other)
+{
+    if (rows() != other.rows() || cols() != other.cols())
+        throw Matrix::AsymmetryError();
+
+    Matrix::Row row_values;
+    Matrix::Vector<Matrix::Row> result_values;
+
+    for (auto y = 0; y < rows(); ++y)
+    {
+        for (auto x = 0; x < cols(); ++x)
+        {
+            row_values.push_back(m_values[y][x] - other.m_values[y][x]);
+        }
+
+        result_values.push_back(row_values);
+        row_values.clear();
+    }
+
+    return Matrix(result_values);
+}
+
+Matrix
+Matrix::operator*=(Matrix other)
+{
+    if (cols() != other.rows())
+        throw Matrix::AsymmetryError();
+
+    Matrix::Value intermediate_value = 0;
+    Matrix::Row row_values;
+    Matrix::Vector<Matrix::Row> result_values;
+
+    for (auto y = 0; y < rows(); ++y)
+    {
+        for (auto z = 0; z < other.cols(); ++z)
+        {
+            for (auto x = 0; x < cols(); ++x)
+            {
+                intermediate_value += m_values[y][x] * other.m_values[x][z];
+            }
+
+            row_values.push_back(intermediate_value);
+            intermediate_value = 0;
+        }
+
+        result_values.push_back(row_values);
+        row_values.clear();
+    }
+
+    return Matrix(result_values);
+}
+
+bool
+Matrix::operator==(Matrix other)
+{
+    return m_values == other.m_values;
+}
+
+bool
+Matrix::operator!=(Matrix other)
+{
+    return !(*this == other);
+}
+
+unsigned int
+Matrix::rows()
+{
+    return m_rows;
+}
+
+unsigned int
+Matrix::cols()
+{
+    return m_cols;
+}
+
+Matrix
+Matrix::inverse()
+{
+
+}
+
+Matrix
+Matrix::transpose()
+{
+
+}
+
+float
+Matrix::trace()
+{
+
+}
+
+float
+Matrix::determinant()
+{
+
+}
+
+Matrix
+Matrix::submatrix(Matrix::Vector<unsigned int> rows, Matrix::Vector<unsigned int> cols)
+{
+
+}
+
+bool
+Matrix::is_square()
+{
+
+}
+
+bool
+Matrix::is_symmetric()
+{
+
+}
+
+bool
+Matrix::is_lower_triangular()
+{
+
+}
+
+bool
+Matrix::is_upper_triangular()
+{
+
+}
+
+Matrix
+Matrix::identity(unsigned int size)
+{
+
+}
+
+Matrix
+operator+(Matrix lhs, Matrix rhs)
+{
+    lhs += rhs;
+    return lhs;
+}
+
+Matrix
+operator-(Matrix lhs, Matrix rhs)
+{
+    lhs -= rhs;
+    return lhs;
+}
+
+Matrix
+operator*(Matrix lhs, Matrix rhs)
+{
+    lhs *= rhs;
+    return lhs;
+}
