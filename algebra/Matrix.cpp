@@ -136,7 +136,21 @@ Matrix::inverse()
 Matrix
 Matrix::transpose()
 {
-
+    Matrix::Row                     current_row;
+    Matrix::Vector<Matrix::Row>     resultant_values;
+    
+    for (auto x = 0; x < cols(); ++x)
+    {
+        for (auto y = 0; y < rows(); ++y)
+        {
+            current_row.push_back(m_values[y][x]);
+        }
+        
+        resultant_values.push_back(current_row);
+        current_row.clear();
+    }
+    
+    return Matrix(resultant_values);
 }
 
 Matrix::Value
