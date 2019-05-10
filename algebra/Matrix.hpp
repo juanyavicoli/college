@@ -54,8 +54,8 @@ class Matrix
 
         Matrix              inverse();
         Matrix              transpose();
-        float               trace();
-        float               determinant();
+        Value               trace();
+        Value               determinant();
 
         Matrix              submatrix(Vector<unsigned int> rows, Vector<unsigned int> cols);
 

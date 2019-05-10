@@ -139,7 +139,7 @@ Matrix::transpose()
 
 }
 
-float
+Matrix::Value
 Matrix::trace()
 {
     if (not is_square())
@@ -158,7 +158,7 @@ Matrix::trace()
     return result;
 }
 
-float
+Matrix::Value
 Matrix::determinant()
 {
 
