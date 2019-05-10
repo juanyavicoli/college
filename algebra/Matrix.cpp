@@ -65,8 +65,10 @@ Matrix::operator-=(Matrix other)
         result_values.push_back(row_values);
         row_values.clear();
     }
+    
+    m_values = result_values;
 
-    return Matrix(result_values);
+    return *this;
 }
 
 Matrix
@@ -96,7 +98,9 @@ Matrix::operator*=(Matrix other)
         row_values.clear();
     }
 
-    return Matrix(result_values);
+    m_values = result_values;
+
+    return *this;
 }
 
 bool
