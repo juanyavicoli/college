@@ -142,7 +142,20 @@ Matrix::transpose()
 float
 Matrix::trace()
 {
-
+    if (not is_square())
+        throw AsymmetryError();
+        
+    Matrix::Value   result = 0;
+        
+    // It doesn't matter if we use rows() or cols()
+    // since the matrix must be square (and thus,
+    // both functions should return the same value).
+    for (auto i = 0; i < rows(); ++i)
+    {
+        result += m_values[i][i];
+    }
+    
+    return result;
 }
 
 float
@@ -160,7 +173,7 @@ Matrix::submatrix(Matrix::Vector<unsigned int> rows, Matrix::Vector<unsigned int
 bool
 Matrix::is_square()
 {
-
+    return cols() == rows();
 }
 
 bool
