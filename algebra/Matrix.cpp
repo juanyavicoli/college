@@ -27,21 +27,21 @@ Matrix::operator+=(Matrix other)
     if (rows() != other.rows() || cols() != other.cols())
         throw Matrix::AsymmetryError();
 
-    Matrix::Row row_values;
-    Matrix::Vector<Matrix::Row> result_values;
+    Matrix::Row                     current_row;
+    Matrix::Vector<Matrix::Row>     resultant_values;
 
     for (auto y = 0; y < rows(); ++y)
     {
         for (auto x = 0; x < cols(); ++x)
         {
-            row_values.push_back(m_values[y][x] + other.m_values[y][x]);
+            current_row.push_back(m_values[y][x] + other.m_values[y][x]);
         }
 
-        result_values.push_back(row_values);
-        row_values.clear();
+        resultant_values.push_back(current_row);
+        current_row.clear();
     }
 
-    m_values = result_values;
+    m_values = resultant_values;
 
     return *this;
 }
@@ -52,21 +52,21 @@ Matrix::operator-=(Matrix other)
     if (rows() != other.rows() || cols() != other.cols())
         throw Matrix::AsymmetryError();
 
-    Matrix::Row row_values;
-    Matrix::Vector<Matrix::Row> result_values;
+    Matrix::Row                     current_row;
+    Matrix::Vector<Matrix::Row>     resultant_values;
 
     for (auto y = 0; y < rows(); ++y)
     {
         for (auto x = 0; x < cols(); ++x)
         {
-            row_values.push_back(m_values[y][x] - other.m_values[y][x]);
+            current_row.push_back(m_values[y][x] - other.m_values[y][x]);
         }
 
-        result_values.push_back(row_values);
-        row_values.clear();
+        resultant_values.push_back(current_row);
+        current_row.clear();
     }
     
-    m_values = result_values;
+    m_values = resultant_values;
 
     return *this;
 }
@@ -77,9 +77,9 @@ Matrix::operator*=(Matrix other)
     if (cols() != other.rows())
         throw Matrix::AsymmetryError();
 
-    Matrix::Value intermediate_value = 0;
-    Matrix::Row row_values;
-    Matrix::Vector<Matrix::Row> result_values;
+    Matrix::Value                   current_value = 0;
+    Matrix::Row                     current_row;
+    Matrix::Vector<Matrix::Row>     resultant_values;
 
     for (auto y = 0; y < rows(); ++y)
     {
@@ -87,18 +87,18 @@ Matrix::operator*=(Matrix other)
         {
             for (auto x = 0; x < cols(); ++x)
             {
-                intermediate_value += m_values[y][x] * other.m_values[x][z];
+                current_value += m_values[y][x] * other.m_values[x][z];
             }
 
-            row_values.push_back(intermediate_value);
-            intermediate_value = 0;
+            current_row.push_back(current_value);
+            current_value = 0;
         }
 
-        result_values.push_back(row_values);
-        row_values.clear();
+        resultant_values.push_back(current_row);
+        current_row.clear();
     }
 
-    m_values = result_values;
+    m_values = resultant_values;
 
     return *this;
 }
