@@ -6,7 +6,7 @@ class TestMatrix(unittest.TestCase):
 
     def setUp(self):
         self.a = Matrix([[1]])
-        self.b = Matrix(([2]))
+        self.b = Matrix([[2]])
         self.c = Matrix([[10]])
         self.d = Matrix([[1, 2], [3, 4]])
         self.e = Matrix([[10, 10], [10, 10]])
@@ -23,12 +23,12 @@ class TestMatrix(unittest.TestCase):
         self.assertEqual(self.a + self.c, Matrix([[11]]))
         self.assertEqual(self.b + self.c, Matrix([[12]]))
 
-        self.assertEqual(self.d + self.e, Matrix([[11, 12], [14, 15]]))
-        self.assertEqual(self.e + self.d, Matrix([[11, 12], [14, 15]]))
+        self.assertEqual(self.d + self.e, Matrix([[11, 12], [13, 14]]))
+        self.assertEqual(self.e + self.d, Matrix([[11, 12], [13, 14]]))
 
         self.assertEqual(self.f + self.g, Matrix([[36, -1, 4], [5, 10, 4]]))
 
-        self.assertEqual(self.h + self.i, Matrix([[6, 8, 11], [10, 6, 7], [16, 13, 16]]))
+        self.assertEqual(self.h + self.i, Matrix([[6, 5, 11], [10, 6, 7], [16, 13, 16]]))
 
         with self.assertRaises(ValueError):
             dummy = self.a + self.d
