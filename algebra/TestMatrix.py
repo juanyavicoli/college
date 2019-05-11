@@ -68,32 +68,42 @@ class TestMatrix(unittest.TestCase):
         self.assertEqual(self.h * 0.5, Matrix([[0.5, 1, 1.5], [2, 2.5, 3], [3.5, 4, 4.5]]))
         self.assertEqual(self.i * 10, Matrix([[50, 30, 80], [60, 10, 10], [90, 50, 70]]))
 
+    @unittest.SkipTest
     def test_matrix_multiplication(self):
         pass
 
+    @unittest.SkipTest
     def test_equality(self):
         pass
 
+    @unittest.SkipTest
     def test_rows_and_cols(self):
         pass
 
+    @unittest.SkipTest
     def test_inverse(self):
         pass
 
+    @unittest.SkipTest
     def test_transpose(self):
         pass
 
+    @unittest.SkipTest
     def test_trace(self):
         pass
 
+    @unittest.SkipTest
     def test_determinant(self):
         pass
 
+    @unittest.SkipTest
     def test_sub_matrix(self):
         pass
 
+    @unittest.SkipTest
     def test_is_square(self):
         pass
 
+    @unittest.SkipTest
     def test_is_symmetric(self):
         pass
