@@ -37,10 +37,36 @@ class TestMatrix(unittest.TestCase):
             dummy = self.i + self.f
 
     def test_subtraction(self):
-        pass
+        self.assertEqual(self.a - self.b, Matrix([[-1]]))
+        self.assertEqual(self.a - self.c, Matrix([[-9]]))
+        self.assertEqual(self.b - self.a, Matrix([[1]]))
+        self.assertEqual(self.c - self.b, Matrix([[8]]))
+        
+        self.assertEqual(self.d - self.e, Matrix([[-9, -8], [-7, -6]]))
+        self.assertEqual(self.e - self.d, Matrix([[9, 8], [7, 6]]))
+        self.assertEqual(self.g - self.f, Matrix([[12, -15, -4], [-7, -6, 0]]))
+        self.assertEqual(self.h - self.i, Matrix([[-4, -1, -5], [-2, 4, 5], [-2, 3, 2]]))
+        
+        with self.assertRaises(ValueError):
+            dummy = self.d - self.a
+            dummy = self.g - self.c
+            dummy = self.b - self.i
+            dummy = self.i - self.f
 
     def test_scalar_multiplication(self):
-        pass
+        self.assertEqual(Matrix([[5]]), self.a * 5)
+        self.assertEqual(Matrix([[20]]), 2 * self.c)
+        self.assertEqual(Matrix([[8]]), 4 * self.b)
+        self.assertEqual(Matrix([[8]]), self.b * 4)
+        
+        self.assertEqual(self.d * 10, Matrix([[10, 20], [30, 40]]))
+        self.assertEqual(Matrix([[42, 42], [42, 42]]), self.e * 4.2)
+        
+        self.assertEqual(1.1 * self.f, Matrix([[13.2, 7.7, 4.4], [6.6, 8.8, 2.2]]))
+        self.assertEqual(Matrix([[-30, 20, 0], [2.5, -5, -5]]), self.g * (-2.5))
+        
+        self.assertEqual(self.h * 0.5, Matrix([[0.5, 1, 1.5], [2, 2.5, 3], [3.5, 4, 4.5]]))
+        self.assertEqual(self.i * 10, Matrix([[50, 30, 80], [60, 10, 10], [90, 50, 70]]))
 
     def test_matrix_multiplication(self):
         pass
