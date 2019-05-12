@@ -72,13 +72,57 @@ class TestMatrix(unittest.TestCase):
     def test_matrix_multiplication(self):
         pass
 
-    @unittest.SkipTest
     def test_equality(self):
-        pass
+        self.assertEqual(self.a, Matrix([[1]]))
+        self.assertEqual(self.b, Matrix([[2]]))
+        self.assertEqual(self.c, Matrix([[10]]))
+        self.assertEqual(self.d, Matrix([[1, 2], [3, 4]]))
+        self.assertEqual(self.e, Matrix([[10, 10], [10, 10]]))
+        self.assertEqual(self.f, Matrix([[12, 7, 4], [6, 8, 2]]))
+        self.assertEqual(self.g, Matrix([[24, -8, 0], [-1, 2, 2]]))
+        self.assertEqual(self.h, Matrix([[1, 2, 3], [4, 5, 6], [7, 8, 9]]))
+        self.assertEqual(self.i, Matrix([[5, 3, 8], [6, 1, 1], [9, 5, 7]]))
 
-    @unittest.SkipTest
+        self.assertEqual(self.a, self.a)
+        self.assertEqual(self.b, self.b)
+        self.assertEqual(self.c, self.c)
+        self.assertEqual(self.d, self.d)
+        self.assertEqual(self.e, self.e)
+        self.assertEqual(self.f, self.f)
+        self.assertEqual(self.g, self.g)
+        self.assertEqual(self.h, self.h)
+        self.assertEqual(self.i, self.i)
+
+        self.assertNotEqual(self.a, self.b)
+        self.assertNotEqual(self.b, self.c)
+        self.assertNotEqual(self.c, self.d)
+        self.assertNotEqual(self.d, self.e)
+        self.assertNotEqual(self.e, self.f)
+        self.assertNotEqual(self.f, self.g)
+        self.assertNotEqual(self.g, self.h)
+        self.assertNotEqual(self.h, self.i)
+        self.assertNotEqual(self.i, self.a)
+
     def test_rows_and_cols(self):
-        pass
+        self.assertEqual(self.a.rows(), 1)
+        self.assertEqual(self.b.rows(), 1)
+        self.assertEqual(self.c.rows(), 1)
+        self.assertEqual(self.d.rows(), 2)
+        self.assertEqual(self.e.rows(), 2)
+        self.assertEqual(self.f.rows(), 2)
+        self.assertEqual(self.g.rows(), 2)
+        self.assertEqual(self.h.rows(), 3)
+        self.assertEqual(self.i.rows(), 3)
+
+        self.assertEqual(self.a.cols(), 1)
+        self.assertEqual(self.b.cols(), 1)
+        self.assertEqual(self.c.cols(), 1)
+        self.assertEqual(self.d.cols(), 2)
+        self.assertEqual(self.e.cols(), 2)
+        self.assertEqual(self.f.cols(), 3)
+        self.assertEqual(self.g.cols(), 3)
+        self.assertEqual(self.h.cols(), 3)
+        self.assertEqual(self.i.cols(), 3)
 
     @unittest.SkipTest
     def test_inverse(self):
