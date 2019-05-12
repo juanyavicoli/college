@@ -84,13 +84,29 @@ class TestMatrix(unittest.TestCase):
     def test_inverse(self):
         pass
 
-    @unittest.SkipTest
     def test_transpose(self):
-        pass
+        self.assertEqual(self.a.transpose(), Matrix([[1]]))
+        self.assertEqual(self.b.transpose(), Matrix([[2]]))
+        self.assertEqual(self.c.transpose(), Matrix([[10]]))
+        self.assertEqual(self.d.transpose(), Matrix([[1, 3], [2, 4]]))
+        self.assertEqual(self.e.transpose(), Matrix([[10, 10], [10, 10]]))
+        self.assertEqual(self.f.transpose(), Matrix([[12, 6], [7, 8], [4, 2]]))
+        self.assertEqual(self.g.transpose(), Matrix([[24, -1], [-8, 2], [0, 2]]))
+        self.assertEqual(self.h.transpose(), Matrix([[1, 4, 7], [2, 5, 8], [3, 6, 9]]))
+        self.assertEqual(self.i.transpose(), Matrix([[5, 6, 9], [3, 1, 5], [8, 1, 7]]))
 
-    @unittest.SkipTest
     def test_trace(self):
-        pass
+        self.assertEqual(self.a.trace(), 1)
+        self.assertEqual(self.b.trace(), 2)
+        self.assertEqual(self.c.trace(), 10)
+        self.assertEqual(self.d.trace(), 5)
+        self.assertEqual(self.e.trace(), 20)
+        self.assertEqual(self.h.trace(), 15)
+        self.assertEqual(self.i.trace(), 13)
+
+        with self.assertRaises(ValueError):
+            self.f.trace()
+            self.g.trace()
 
     @unittest.SkipTest
     def test_determinant(self):
@@ -100,9 +116,16 @@ class TestMatrix(unittest.TestCase):
     def test_sub_matrix(self):
         pass
 
-    @unittest.SkipTest
     def test_is_square(self):
-        pass
+        self.assertEqual(self.a.is_square(), True)
+        self.assertEqual(self.b.is_square(), True)
+        self.assertEqual(self.c.is_square(), True)
+        self.assertEqual(self.d.is_square(), True)
+        self.assertEqual(self.e.is_square(), True)
+        self.assertEqual(self.f.is_square(), False)
+        self.assertEqual(self.g.is_square(), False)
+        self.assertEqual(self.h.is_square(), True)
+        self.assertEqual(self.i.is_square(), True)
 
     @unittest.SkipTest
     def test_is_symmetric(self):
