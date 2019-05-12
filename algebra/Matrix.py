@@ -1,3 +1,6 @@
+import math
+
+
 class Matrix:
 
     def __init__(self, data: list):
@@ -85,7 +88,7 @@ class Matrix:
 
         for y in range(self.rows()):
             for x in range(self.cols()):
-                if self.__data[y][x] != other.__data[y][x]:
+                if not math.isclose(self.__data[y][x], other.__data[y][x]):
                     return False
 
         return True
