@@ -141,8 +141,21 @@ class Matrix:
     def determinant(self) -> float:
         pass
 
-    def sub_matrix(self):
-        pass
+    def sub_matrix(self, remove_rows: list, remove_cols: list):
+        resultant_rows = []
+        current_row = []
+
+        for y in range(self.rows()):
+            if y + 1 not in remove_rows:
+                for x in range(self.cols()):
+                    if x + 1 not in remove_cols:
+                        current_row.append(self.__data[y][x])
+
+                if len(current_row) != 0:
+                    resultant_rows.append(current_row.copy())
+                    current_row.clear()
+
+        return Matrix(resultant_rows)
 
     def is_square(self) -> bool:
         if self.rows() == self.cols():
