@@ -109,10 +109,28 @@ class Matrix:
         pass
 
     def transpose(self):
-        pass
+        resultant_rows = []
+        current_row = []
+
+        for x in range(self.cols()):
+            for y in range(self.rows()):
+                current_row.append(self.__data[y][x])
+
+            resultant_rows.append(current_row.copy())
+            current_row.clear()
+
+        return Matrix(resultant_rows)
 
     def trace(self) -> float:
-        pass
+        if not self.is_square():
+            raise ValueError("Matrix must be square.")
+
+        result = 0
+
+        for i in range(self.rows()):
+            result += self.__data[i][i]
+
+        return result
 
     def determinant(self) -> float:
         pass
@@ -121,7 +139,10 @@ class Matrix:
         pass
 
     def is_square(self) -> bool:
-        pass
+        if self.rows() == self.cols():
+            return True
+        else:
+            return False
 
     def is_symmetric(self) -> bool:
         pass
