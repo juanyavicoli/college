@@ -68,9 +68,21 @@ class TestMatrix(unittest.TestCase):
         self.assertEqual(self.h * 0.5, Matrix([[0.5, 1, 1.5], [2, 2.5, 3], [3.5, 4, 4.5]]))
         self.assertEqual(self.i * 10, Matrix([[50, 30, 80], [60, 10, 10], [90, 50, 70]]))
 
-    @unittest.SkipTest
     def test_matrix_multiplication(self):
-        pass
+        self.assertEqual(self.a @ self.b, Matrix([[2]]))
+        self.assertEqual(self.b @ self.c, Matrix([[20]]))
+        self.assertEqual(self.d @ self.e, Matrix([[30, 30], [70, 70]]))
+        self.assertEqual(self.e @ self.d, Matrix([[40, 60], [40, 60]]))
+        self.assertEqual(self.g @ self.h, Matrix([[-8, 8, 24], [21, 24, 27]]))
+        self.assertEqual(self.g @ self.i, Matrix([[72, 64, 184], [25, 9, 8]]))
+        self.assertEqual(self.h @ self.i, Matrix([[44, 20, 31], [104, 47, 79], [164, 74, 127]]))
+        self.assertEqual(self.i @ self.h, Matrix([[73, 89, 105], [17, 25, 33], [78, 99, 120]]))
+
+        with self.assertRaises(ValueError):
+            dummy = self.a @ self.d
+            dummy = self.a @ self.h
+            dummy = self.f @ self.g
+            dummy = self.g @ self.f
 
     def test_equality(self):
         self.assertEqual(self.a, Matrix([[1]]))
@@ -152,9 +164,18 @@ class TestMatrix(unittest.TestCase):
             self.f.trace()
             self.g.trace()
 
-    @unittest.SkipTest
     def test_determinant(self):
-        pass
+        self.assertEqual(self.a.determinant(), 1)
+        self.assertEqual(self.b.determinant(), 2)
+        self.assertEqual(self.c.determinant(), 10)
+        self.assertEqual(self.d.determinant(), -2)
+        self.assertEqual(self.e.determinant(), 0)
+        self.assertEqual(self.h.determinant(), 0)
+        self.assertEqual(self.i.determinant(), 79)
+
+        with self.assertRaises(ValueError):
+            dummy = self.f.determinant()
+            dummy = self.g.determinant()
 
     def test_sub_matrix(self):
         self.assertEqual(self.a.sub_matrix([], []), self.a)
