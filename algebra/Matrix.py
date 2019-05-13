@@ -139,7 +139,24 @@ class Matrix:
         return result
 
     def determinant(self) -> float:
-        pass
+        if not self.is_square():
+            raise ValueError("Matrix must be square.")
+
+        result = 0
+
+        if self.rows() > 1:
+            alternator = 1
+
+            for x in range(self.cols()):
+                # Remove the first row and the current column.
+                sub_matrix = self.sub_matrix([1], [x + 1])
+
+                result += alternator * self.__data[0][x] * sub_matrix.determinant()
+                alternator *= -1
+        else:
+            result = self.__data[0][0]
+
+        return result
 
     def sub_matrix(self, remove_rows: list, remove_cols: list):
         resultant_rows = []
