@@ -231,6 +231,15 @@ class TestMatrix(unittest.TestCase):
         self.assertEqual(self.h.is_square(), True)
         self.assertEqual(self.i.is_square(), True)
 
-    @unittest.SkipTest
     def test_is_symmetric(self):
-        pass
+        self.assertEqual(self.a.is_symmetric(), True)
+        self.assertEqual(self.b.is_symmetric(), True)
+        self.assertEqual(self.c.is_symmetric(), True)
+        self.assertEqual(self.d.is_symmetric(), False)
+        self.assertEqual(self.e.is_symmetric(), True)
+        self.assertEqual(self.f.is_symmetric(), False)
+        self.assertEqual(self.g.is_symmetric(), False)
+        self.assertEqual(self.h.is_symmetric(), False)
+        self.assertEqual(self.i.is_symmetric(), False)
+        self.assertEqual(self.j.is_symmetric(), True)
+        self.assertEqual(self.k.is_symmetric(), True)
