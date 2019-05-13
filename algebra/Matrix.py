@@ -149,7 +149,7 @@ class Matrix:
 
             for x in range(self.cols()):
                 # Remove the first row and the current column.
-                sub_matrix = self.sub_matrix([1], [x + 1])
+                sub_matrix = self.sub_matrix([0], [x])
 
                 result += alternator * self.__data[0][x] * sub_matrix.determinant()
                 alternator *= -1
@@ -163,9 +163,9 @@ class Matrix:
         current_row = []
 
         for y in range(self.rows()):
-            if y + 1 not in remove_rows:
+            if y not in remove_rows:
                 for x in range(self.cols()):
-                    if x + 1 not in remove_cols:
+                    if x not in remove_cols:
                         current_row.append(self.__data[y][x])
 
                 if len(current_row) != 0:

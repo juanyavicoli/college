@@ -192,31 +192,31 @@ class TestMatrix(unittest.TestCase):
         self.assertEqual(self.f.sub_matrix([23], [256]), self.f)
         self.assertEqual(self.g.sub_matrix([99], [999]), self.g)
 
-        self.assertEqual(self.d.sub_matrix([], [1]), Matrix([[2], [4]]))
-        self.assertEqual(self.d.sub_matrix([], [2]), Matrix([[1], [3]]))
-        self.assertEqual(self.d.sub_matrix([2], []), Matrix([[1, 2]]))
-        self.assertEqual(self.d.sub_matrix([1], [1]), Matrix([[4]]))
+        self.assertEqual(self.d.sub_matrix([], [0]), Matrix([[2], [4]]))
+        self.assertEqual(self.d.sub_matrix([], [1]), Matrix([[1], [3]]))
+        self.assertEqual(self.d.sub_matrix([1], []), Matrix([[1, 2]]))
+        self.assertEqual(self.d.sub_matrix([0], [0]), Matrix([[4]]))
 
-        self.assertEqual(self.e.sub_matrix([1], []), Matrix([[10, 10]]))
-        self.assertEqual(self.e.sub_matrix([], [1]), Matrix([[10], [10]]))
+        self.assertEqual(self.e.sub_matrix([0], []), Matrix([[10, 10]]))
+        self.assertEqual(self.e.sub_matrix([], [0]), Matrix([[10], [10]]))
 
-        self.assertEqual(self.f.sub_matrix([1], []), Matrix([[6, 8, 2]]))
-        self.assertEqual(self.f.sub_matrix([2], []), Matrix([[12, 7, 4]]))
-        self.assertEqual(self.f.sub_matrix([], [3]), Matrix([[12, 7], [6, 8]]))
-        self.assertEqual(self.f.sub_matrix([], [2]), Matrix([[12, 4], [6, 2]]))
-        self.assertEqual(self.f.sub_matrix([], [1, 2]), Matrix([[4], [2]]))
-        self.assertEqual(self.f.sub_matrix([], [2, 3]), Matrix([[12], [6]]))
+        self.assertEqual(self.f.sub_matrix([0], []), Matrix([[6, 8, 2]]))
+        self.assertEqual(self.f.sub_matrix([1], []), Matrix([[12, 7, 4]]))
+        self.assertEqual(self.f.sub_matrix([], [2]), Matrix([[12, 7], [6, 8]]))
+        self.assertEqual(self.f.sub_matrix([], [1]), Matrix([[12, 4], [6, 2]]))
+        self.assertEqual(self.f.sub_matrix([], [0, 1]), Matrix([[4], [2]]))
+        self.assertEqual(self.f.sub_matrix([], [1, 2]), Matrix([[12], [6]]))
 
-        self.assertEqual(self.h.sub_matrix([3], []), Matrix([[1, 2, 3], [4, 5, 6]]))
-        self.assertEqual(self.h.sub_matrix([3], [3]), Matrix([[1, 2], [4, 5]]))
+        self.assertEqual(self.h.sub_matrix([2], []), Matrix([[1, 2, 3], [4, 5, 6]]))
+        self.assertEqual(self.h.sub_matrix([2], [2]), Matrix([[1, 2], [4, 5]]))
 
         with self.assertRaises(ValueError):
-            dummy = self.a.sub_matrix([], [1])
-            dummy = self.a.sub_matrix([1], [])
-            dummy = self.a.sub_matrix([1, 2, 10], [99, 15, 1, 6])
+            dummy = self.a.sub_matrix([], [0])
+            dummy = self.a.sub_matrix([0], [])
+            dummy = self.a.sub_matrix([0, 1, 10], [99, 15, 0, 6])
 
-            dummy = self.d.sub_matrix([1, 2], [1, 2])
-            dummy = self.d.sub_matrix([2, 1], [2, 1])
+            dummy = self.d.sub_matrix([0, 1], [0, 1])
+            dummy = self.d.sub_matrix([1, 0], [1, 0])
 
     def test_is_square(self):
         self.assertEqual(self.a.is_square(), True)
