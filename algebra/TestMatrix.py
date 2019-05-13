@@ -14,6 +14,8 @@ class TestMatrix(unittest.TestCase):
         self.g = Matrix([[24, -8, 0], [-1, 2, 2]])
         self.h = Matrix([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
         self.i = Matrix([[5, 3, 8], [6, 1, 1], [9, 5, 7]])
+        self.j = Matrix([[1, 2], [2, 3]])
+        self.k = Matrix([[5, 6, 7], [6, 3, 2], [7, 2, 1]])
 
     def tearDown(self):
         pass
