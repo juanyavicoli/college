@@ -181,4 +181,7 @@ class Matrix:
             return False
 
     def is_symmetric(self) -> bool:
-        pass
+        if self.transpose() == self:
+            return True
+        else:
+            return False
