@@ -138,9 +138,24 @@ class TestMatrix(unittest.TestCase):
         self.assertEqual(self.h.cols(), 3)
         self.assertEqual(self.i.cols(), 3)
 
-    @unittest.SkipTest
     def test_inverse(self):
-        pass
+        self.assertEqual(self.a.inverse(), Matrix([[1]]))
+        self.assertEqual(self.b.inverse(), Matrix([[2]]))
+        self.assertEqual(self.c.inverse(), Matrix([[10]]))
+        self.assertEqual(self.d.inverse(), Matrix([[-2, 1], [3/2, -1/2]]))
+        self.assertEqual(self.i.inverse(), Matrix([[2/79, 19/79, -5/79], 
+                                                   [-33/79, -37/79, 43/79], 
+                                                   [21/79, 2/79, -13/79]]))
+        self.assertEqual(self.j.inverse(), Matrix([[-3, 2], [2, -1]]))
+        self.assertEqual(self.k.inverse(), Matrix([[1/20, -2/5, 9/20],
+                                                   [-2/5, 11/5, -8/5],
+                                                   [9/20, -8/5, 21/20]]))
+        
+        with self.assertRaises(ValueError):
+            dummy = self.e.inverse()
+            dummy = self.f.inverse()
+            dummy = self.g.inverse()
+            dummy = self.h.inverse()
 
     def test_transpose(self):
         self.assertEqual(self.a.transpose(), Matrix([[1]]))
