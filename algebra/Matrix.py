@@ -10,7 +10,7 @@ class Matrix:
         if len(data[0]) == 0:
             raise ValueError("Matrix must have at least 1 row and 1 column.")
 
-        self.__data = data
+        self.__data = data.copy()
         self.__rows = len(data)
         self.__cols = len(data[0])
 
