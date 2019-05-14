@@ -116,6 +116,19 @@ class TestMatrix(unittest.TestCase):
         self.assertNotEqual(self.g, self.h)
         self.assertNotEqual(self.h, self.i)
         self.assertNotEqual(self.i, self.a)
+        
+    def test_data(self):
+        self.assertEqual(self.a.data(), [[1]])
+        self.assertEqual(self.b.data(), [[2]])
+        self.assertEqual(self.c.data(), [[10]])
+        self.assertEqual(self.d.data(), [[1, 2], [3, 4]])
+        self.assertEqual(self.e.data(), [[10, 10], [10, 10]])
+        self.assertEqual(self.f.data(), [[12, 7, 4], [6, 8, 2]])
+        self.assertEqual(self.g.data(), [[24, -8, 0], [-1, 2, 2]])
+        self.assertEqual(self.h.data(), [[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+        self.assertEqual(self.i.data(), [[5, 3, 8], [6, 1, 1], [9, 5, 7]])
+        self.assertEqual(self.j.data(), [[1, 2], [2, 3]])
+        self.assertEqual(self.k.data(), [[5, 6, 7], [6, 3, 2], [7, 2, 1]])
 
     def test_rows_and_cols(self):
         self.assertEqual(self.a.rows(), 1)
