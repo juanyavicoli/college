@@ -56,17 +56,14 @@ class TestMatrix(unittest.TestCase):
             dummy = self.i - self.f
 
     def test_scalar_multiplication(self):
-        self.assertEqual(Matrix([[5]]), self.a * 5)
-        self.assertEqual(Matrix([[20]]), 2 * self.c)
-        self.assertEqual(Matrix([[8]]), 4 * self.b)
-        self.assertEqual(Matrix([[8]]), self.b * 4)
-        
+        self.assertEqual(self.a * 5, Matrix([[5]]))
+        self.assertEqual(self.b * 4, Matrix([[8]]))
+        self.assertEqual(4 * self.b, Matrix([[8]]))
+        self.assertEqual(2 * self.c, Matrix([[20]]))
         self.assertEqual(self.d * 10, Matrix([[10, 20], [30, 40]]))
-        self.assertEqual(Matrix([[42, 42], [42, 42]]), self.e * 4.2)
-        
+        self.assertEqual(self.e * 4.2, Matrix([[42, 42], [42, 42]]))
         self.assertEqual(1.1 * self.f, Matrix([[13.2, 7.7, 4.4], [6.6, 8.8, 2.2]]))
-        self.assertEqual(Matrix([[-60, 20, 0], [2.5, -5, -5]]), self.g * (-2.5))
-        
+        self.assertEqual(self.g * (-2.5), Matrix([[-60, 20, 0], [2.5, -5, -5]]))
         self.assertEqual(self.h * 0.5, Matrix([[0.5, 1, 1.5], [2, 2.5, 3], [3.5, 4, 4.5]]))
         self.assertEqual(self.i * 10, Matrix([[50, 30, 80], [60, 10, 10], [90, 50, 70]]))
 
