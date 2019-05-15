@@ -106,7 +106,7 @@ class Matrix:
         return repr(self.__data)
 
     def data(self) -> list:
-        return self.__data
+        return self.__data.copy()
 
     def rows(self) -> int:
         return self.__rows
