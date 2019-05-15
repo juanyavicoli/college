@@ -3,6 +3,20 @@ import math
 
 class Matrix:
 
+    @staticmethod
+    def identity(size: int):
+        if size <= 0:
+            raise ValueError("Size must be positive, non-zero.")
+
+        resultant_rows = []
+        current_row = [0] * size
+        
+        for i in range(size):
+            resultant_rows.append(current_row.copy())
+            resultant_rows[i][i] = 1
+
+        return Matrix(resultant_rows)
+
     def __init__(self, data: list):
         if len(data) == 0:
             raise ValueError("Matrix must have at least 1 row and 1 column.")
