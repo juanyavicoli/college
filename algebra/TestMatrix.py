@@ -16,6 +16,19 @@ class TestMatrix(unittest.TestCase):
         self.i = Matrix([[5, 3, 8], [6, 1, 1], [9, 5, 7]])
         self.j = Matrix([[1, 2], [2, 3]])
         self.k = Matrix([[5, 6, 7], [6, 3, 2], [7, 2, 1]])
+        
+        self.assertEqual(Matrix.identity(1), Matrix([[1]]))
+        self.assertEqual(Matrix.identity(2), Matrix([[1, 0], [0, 1]]))
+        self.assertEqual(Matrix.identity(3), Matrix([[1, 0, 0], [0, 1, 0], [0, 0, 1]]))
+        self.assertEqual(Matrix.identity(4), Matrix([[1, 0, 0, 0],
+                                                     [0, 1, 0, 0],
+                                                     [0, 0, 1, 0],
+                                                     [0, 0, 0, 1]]))
+                                                     
+        with self.assertRaises(ValueError):
+            dummy = Matrix.identity(0)
+            dummy = Matrix.identity(-1)
+            dummy = Matrix.identity(-467)
 
     def tearDown(self):
         pass
