@@ -235,7 +235,30 @@ class Matrix:
                     current_row.clear()
 
         return Matrix(resultant_rows)
-
+        
+    def super_matrix(self, append_rows: int, append_cols: int):
+        if append_rows < 0 or append_cols < 0:
+            raise ValueError("Parameters must be positive or zero.")
+            
+        resultant_rows = []
+        current_row = []
+        zeroed_row = [0] * (self.cols() + append_cols)
+            
+        for y in range(self.rows()):
+            for x in range(self.cols()):
+                current_row.append(self.__data[y][x])
+                
+            for x in range(self.cols(), self.cols() + append_cols):
+                current_row.append(0)
+                
+            resultant_rows.append(current_row.copy())
+            current_row.clear()
+                
+        for y in range(self.rows(), self.rows() + append_rows):
+            resultant_rows.append(zeroed_row.copy())
+            
+        return Matrix(resultant_rows)
+            
     def is_square(self) -> bool:
         if self.rows() == self.cols():
             return True
