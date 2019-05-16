@@ -257,6 +257,26 @@ class TestMatrix(unittest.TestCase):
 
             dummy = self.d.sub_matrix([0, 1], [0, 1])
             dummy = self.d.sub_matrix([1, 0], [1, 0])
+            
+    def test_super_matrix(self):
+        self.assertEqual(self.a.super_matrix(1, 0), Matrix([[1], [0]]))
+        self.assertEqual(self.a.super_matrix(0, 1), Matrix([[1, 0]]))
+        self.assertEqual(self.a.super_matrix(1, 1), Matrix([[1, 0], [0, 0]]))
+        self.assertEqual(self.b.super_matrix(1, 0), Matrix([[2], [0]]))
+        self.assertEqual(self.b.super_matrix(0, 1), Matrix([[2, 0]]))
+        self.assertEqual(self.b.super_matrix(1, 1), Matrix([[2, 0], [0, 0]]))
+        self.assertEqual(self.c.super_matrix(1, 0), Matrix([[10], [0]]))
+        self.assertEqual(self.c.super_matrix(0, 1), Matrix([[10, 0]]))
+        self.assertEqual(self.c.super_matrix(1, 1), Matrix([[10, 0], [0, 0]]))
+        self.assertEqual(self.d.super_matrix(1, 0), Matrix([[1, 2], [3, 4], [0, 0]]))
+        self.assertEqual(self.d.super_matrix(0, 1), Matrix([[1, 2, 0], [3, 4, 0]]))
+        self.assertEqual(self.d.super_matrix(1, 1), Matrix([[1, 2, 0], [3, 4, 0], [0, 0, 0]]))
+        
+        with self.assertRaises(ValueError):
+            dummy = self.a.super_matrix(-1, 0)
+            dummy = self.b.super_matrix(-15, 15)
+            dummy = self.c.super_matrix(20, -999)
+            dummy = self.d.super_matrix(-45, -45)
 
     def test_is_square(self):
         self.assertEqual(self.a.is_square(), True)
