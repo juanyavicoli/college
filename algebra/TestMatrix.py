@@ -204,6 +204,19 @@ class TestMatrix(unittest.TestCase):
             self.f.trace()
             self.g.trace()
 
+    def test_rank(self):
+        self.assertEqual(self.a.rank(), 1)
+        self.assertEqual(self.b.rank(), 1)
+        self.assertEqual(self.c.rank(), 1)
+        self.assertEqual(self.d.rank(), 2)
+        self.assertEqual(self.e.rank(), 1)
+        self.assertEqual(self.f.rank(), 2)
+        self.assertEqual(self.g.rank(), 2)
+        self.assertEqual(self.h.rank(), 2)
+        self.assertEqual(self.i.rank(), 3)
+        self.assertEqual(self.j.rank(), 2)
+        self.assertEqual(self.k.rank(), 3)
+
     def test_determinant(self):
         self.assertEqual(self.a.determinant(), 1)
         self.assertEqual(self.b.determinant(), 2)
@@ -216,6 +229,25 @@ class TestMatrix(unittest.TestCase):
         with self.assertRaises(ValueError):
             dummy = self.f.determinant()
             dummy = self.g.determinant()
+
+    def test_inner_matrix(self):
+        self.assertEqual(self.a.inner_matrix([0], [0]), self.a)
+        self.assertEqual(self.b.inner_matrix([0], [0]), self.b)
+        self.assertEqual(self.c.inner_matrix([0], [0]), self.c)
+        self.assertEqual(self.d.inner_matrix([0, 1], [0, 1]), self.d)
+        self.assertEqual(self.e.inner_matrix([0, 1], [0, 1]), self.e)
+        self.assertEqual(self.f.inner_matrix([0, 1], [0, 1, 2]), self.f)
+        self.assertEqual(self.g.inner_matrix([0, 1], [0, 1, 2]), self.g)
+        self.assertEqual(self.h.inner_matrix([0, 1, 2], [0, 1, 2]), self.h)
+        self.assertEqual(self.i.inner_matrix([0, 1, 2], [0, 1, 2]), self.i)
+        self.assertEqual(self.j.inner_matrix([0, 1], [0, 1]), self.j)
+        self.assertEqual(self.k.inner_matrix([0, 1, 2], [0, 1, 2]), self.k)
+
+        with self.assertRaises(ValueError):
+            dummy = self.a.inner_matrix([], [])
+            dummy = self.a.inner_matrix([1], [0])
+            dummy = self.a.inner_matrix([0], [1])
+            dummy = self.a.inner_matrix([1], [1])
 
     def test_sub_matrix(self):
         self.assertEqual(self.a.sub_matrix([], []), self.a)
