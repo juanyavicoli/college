@@ -200,6 +200,34 @@ class Matrix:
 
         return result
 
+    def rank(self) -> int:
+        size = min(self.rows(), self.cols())
+
+        keep_rows = []
+        keep_cols = []
+
+        while size > 0:
+            for y in range(self.rows() - size + 1):
+                for z in range(y, y + size):
+                    keep_rows.append(z)
+
+                for x in range(self.cols() - size + 1):
+                    for w in range(x, x + size):
+                        keep_cols.append(w)
+
+                    inner_matrix = self.inner_matrix(keep_rows, keep_cols)
+
+                    if inner_matrix.determinant() != 0:
+                        return size
+
+                keep_cols.clear()
+
+            keep_rows.clear()
+
+            size -= 1
+
+        return size
+
     def determinant(self) -> float:
         if not self.is_square():
             raise ValueError("Matrix must be square.")
@@ -219,6 +247,24 @@ class Matrix:
             result = self.__data[0][0]
 
         return result
+
+    def inner_matrix(self, keep_rows: iter, keep_cols: iter):
+        keep_rows = sorted(keep_rows)
+        keep_cols = sorted(keep_cols)
+
+        resultant_rows = []
+        data = self.data()
+
+        for y in range(self.rows()):
+            if y in keep_rows:
+                resultant_rows.append(data[y])
+
+        for x in reversed(range(self.cols())):
+            if x not in keep_cols:
+                for row in resultant_rows:
+                    del row[x]
+
+        return Matrix(resultant_rows)
 
     def sub_matrix(self, remove_rows: list, remove_cols: list):
         resultant_rows = []
