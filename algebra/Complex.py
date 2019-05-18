@@ -28,8 +28,14 @@ class Complex:
         
         return Complex(real, imaginary)
         
-    def __eq__(self, other) -> boolean:
-        return (self.real() == other.real()) and (self.imaginary == other.imaginary)
+    def __eq__(self, other) -> bool:
+        if self.real() != other.real():
+            return False
+            
+        if self.imaginary() != other.imaginary():
+            return False
+            
+        return True
         
     def real(self):
         return self.__re
