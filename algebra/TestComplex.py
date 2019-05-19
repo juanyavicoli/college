@@ -33,7 +33,27 @@ class TestComplex(unittest.TestCase):
         pass
         
     def test_complex_multiplication(self):
-        pass
+        self.assertEqual(self.a @ self.b, Complex(5, -50))
+        self.assertEqual(self.b @ self.c, Complex(10, -5))
+        self.assertEqual(self.c @ self.d, Complex(-4, 12))
+        self.assertEqual(self.d @ self.e, Complex(-20, -28))
+        self.assertEqual(self.e @ self.a, Complex(-59, -16))
         
     def test_equality(self):
-        pass
+        self.assertEqual(self.a, Complex(10, 1))
+        self.assertEqual(self.b, Complex(0, -5))
+        self.assertEqual(self.c, Complex(1, 2))
+        self.assertEqual(self.d, Complex(4, 4))
+        self.assertEqual(self.e, Complex(-6, -1))
+        
+        self.assertEqual(self.a, self.a)
+        self.assertEqual(self.b, self.b)
+        self.assertEqual(self.c, self.c)
+        self.assertEqual(self.d, self.d)
+        self.assertEqual(self.e, self.e)
+        
+        self.assertNotEqual(self.a, self.b)
+        self.assertNotEqual(self.b, self.c)
+        self.assertNotEqual(self.c, self.d)
+        self.assertNotEqual(self.d, self.e)
+        self.assertNotEqual(self.e, self.a)
