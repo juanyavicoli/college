@@ -30,7 +30,12 @@ class TestComplex(unittest.TestCase):
         self.assertEqual(self.e - self.d, Complex(-10, -5))
     
     def test_scalar_multiplication(self):
-        pass
+        self.assertEqual(self.a * 1, self.a)
+        self.assertEqual(1 * self.a, self.a)
+        self.assertEqual(self.b * 2, Complex(0, -10))
+        self.assertEqual(2 * self.b, Complex(0, -10))
+        self.assertEqual(self.c * 3, Complex(3, 6))
+        self.assertEqual(3 * self.c, Complex(3, 6))
         
     def test_complex_multiplication(self):
         self.assertEqual(self.a @ self.b, Complex(5, -50))
