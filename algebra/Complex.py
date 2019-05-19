@@ -17,7 +17,7 @@ class Complex:
         return Complex(real, imaginary)
         
     def __mul__(self, other: float):
-        return self * Complex(other, 0)
+        return self @ Complex(other, 0)
         
     def __rmul__(self, other: float):
         return self * other
