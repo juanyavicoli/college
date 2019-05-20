@@ -37,6 +37,12 @@ class Complex:
             
         return True
         
+    def __str__(self):
+        return str(self.__re) + "+" + str(self.__im) + "i"
+        
+    def __repr__(self):
+        return "Complex(" + str(self.__re) + ", " + str(self.__im) + ")"
+        
     def real(self):
         return self.__re
     
