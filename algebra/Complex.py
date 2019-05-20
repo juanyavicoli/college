@@ -46,10 +46,10 @@ class Complex:
     def __repr__(self):
         return "Complex(" + str(self.__re) + ", " + str(self.__im) + ")"
         
-    def real(self):
+    def real(self) -> float:
         return self.__re
     
-    def imaginary(self):
+    def imaginary(self) -> float:
         return self.__im
     
     def conjugate(self):
@@ -63,12 +63,12 @@ class Complex:
         
         return Complex(self.real() / sum_of_squares, -self.imaginary() / sum_of_squares)
             
-    def is_zero(self):
+    def is_zero(self) -> bool:
         return math.isclose(self.real() ** 2 + self.imaginary() ** 2, 0)
             
-    def is_real(self):
+    def is_real(self) -> bool:
         return math.isclose(self.imaginary(), 0)
         
-    def is_pure(self):
+    def is_pure(self) -> bool:
         return math.isclose(self.real(), 0)
 
