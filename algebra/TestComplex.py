@@ -82,4 +82,28 @@ class TestComplex(unittest.TestCase):
         self.assertEqual(self.c.conjugate(), Complex(1, -2))
         self.assertEqual(self.d.conjugate(), Complex(4, -4))
         self.assertEqual(self.e.conjugate(), Complex(-6, 1))
+        
+    def test_is_zero(self):
+        self.assertEqual(self.a.is_zero(), False)
+        self.assertEqual(self.b.is_zero(), False)
+        self.assertEqual(self.c.is_zero(), False)
+        self.assertEqual(self.d.is_zero(), False)
+        self.assertEqual(self.e.is_zero(), False)
+        self.assertEqual(Complex(0, 0).is_zero(), True)
+        
+    def test_is_real(self):
+        self.assertEqual(self.a.is_real(), False)
+        self.assertEqual(self.b.is_real(), False)
+        self.assertEqual(self.c.is_real(), False)
+        self.assertEqual(self.d.is_real(), False)
+        self.assertEqual(self.e.is_real(), False)
+        self.assertEqual(self.f.is_real(), True)
+        
+    def test_is_pure(self):
+        self.assertEqual(self.a.is_pure(), False)
+        self.assertEqual(self.b.is_pure(), True)
+        self.assertEqual(self.c.is_pure(), False)
+        self.assertEqual(self.d.is_pure(), False)
+        self.assertEqual(self.e.is_pure(), False)
+        self.assertEqual(self.f.is_pure(), False)
 
