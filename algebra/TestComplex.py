@@ -10,6 +10,7 @@ class TestComplex(unittest.TestCase):
         self.c = Complex(1, 2)
         self.d = Complex(4, 4)
         self.e = Complex(-6, -1)
+        self.f = Complex(15, 0)
 
     def tearDown(self):
         pass
