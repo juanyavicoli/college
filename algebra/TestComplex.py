@@ -62,3 +62,23 @@ class TestComplex(unittest.TestCase):
         self.assertNotEqual(self.c, self.d)
         self.assertNotEqual(self.d, self.e)
         self.assertNotEqual(self.e, self.a)
+        
+    def test_real_and_imaginary(self):
+        self.assertEqual(self.a.real(), 10)
+        self.assertEqual(self.a.imaginary(), 1)
+        self.assertEqual(self.b.real(), 0)
+        self.assertEqual(self.b.imaginary(), -5)
+        self.assertEqual(self.c.real(), 1)
+        self.assertEqual(self.c.imaginary(), 2)
+        self.assertEqual(self.d.real(), 4)
+        self.assertEqual(self.d.imaginary(), 4)
+        self.assertEqual(self.e.real(), -6)
+        self.assertEqual(self.e.imaginary(), -1)
+        
+    def test_conjugate(self):
+        self.assertEqual(self.a.conjugate(), Complex(10, -1))
+        self.assertEqual(self.b.conjugate(), Complex(0, 5))
+        self.assertEqual(self.c.conjugate(), Complex(1, -2))
+        self.assertEqual(self.d.conjugate(), Complex(4, -4))
+        self.assertEqual(self.e.conjugate(), Complex(-6, 1))
+
