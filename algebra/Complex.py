@@ -1,3 +1,6 @@
+import math
+
+
 class Complex:
     
     def __init__(self, re: float, im: float):
