@@ -29,10 +29,10 @@ class Complex:
         return Complex(real, imaginary)
         
     def __eq__(self, other) -> bool:
-        if self.real() != other.real():
+        if not math.isclose(self.real(), other.real()):
             return False
             
-        if self.imaginary() != other.imaginary():
+        if not math.isclose(self.imaginary(), other.imaginary()):
             return False
             
         return True
