@@ -83,6 +83,14 @@ class TestComplex(unittest.TestCase):
         self.assertEqual(self.d.conjugate(), Complex(4, -4))
         self.assertEqual(self.e.conjugate(), Complex(-6, 1))
         
+    def test_reciprocal(self):
+        self.assertEqual(self.a.reciprocal(), Complex(0.099009900990099, -0.0099009900990099))
+        self.assertEqual(self.b.reciprocal(), Complex(0, 0.2))
+        self.assertEqual(self.c.reciprocal(), Complex(0.2, -0.4))
+        self.assertEqual(self.d.reciprocal(), Complex(0.125, -0.125))
+        self.assertEqual(self.e.reciprocal(), Complex(-0.16216216216216, 0.027027027027027))
+        self.assertEqual(self.f.reciprocal(), Complex(0.066666666666667, 0))
+        
     def test_is_zero(self):
         self.assertEqual(self.a.is_zero(), False)
         self.assertEqual(self.b.is_zero(), False)
