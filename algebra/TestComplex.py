@@ -90,6 +90,21 @@ class TestComplex(unittest.TestCase):
         self.assertEqual(self.d.reciprocal(), Complex(0.125, -0.125))
         self.assertEqual(self.e.reciprocal(), Complex(-0.16216216216216, 0.027027027027027))
         self.assertEqual(self.f.reciprocal(), Complex(0.066666666666667, 0))
+    
+    def test_duplicate(self):
+        self.assertEqual(self.a.duplicate(), self.a)
+        self.assertEqual(self.b.duplicate(), self.b)
+        self.assertEqual(self.c.duplicate(), self.c)
+        self.assertEqual(self.d.duplicate(), self.d)
+        self.assertEqual(self.e.duplicate(), self.e)
+        self.assertEqual(self.f.duplicate(), self.f)
+        
+        self.assertEqual(self.a.duplicate(), Complex(10, 1))
+        self.assertEqual(self.b.duplicate(), Complex(0, -5))
+        self.assertEqual(self.c.duplicate(), Complex(1, 2))
+        self.assertEqual(self.d.duplicate(), Complex(4, 4))
+        self.assertEqual(self.e.duplicate(), Complex(-6, -1))
+        self.assertEqual(self.f.duplicate(), Complex(15, 0))
         
     def test_is_zero(self):
         self.assertEqual(self.a.is_zero(), False)
