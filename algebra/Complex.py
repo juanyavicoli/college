@@ -63,6 +63,9 @@ class Complex:
         
         return Complex(self.real() / sum_of_squares, -self.imaginary() / sum_of_squares)
             
+    def duplicate(self):
+        return Complex(self.real(), self.imaginary())
+
     def is_zero(self) -> bool:
         return math.isclose(self.real() ** 2 + self.imaginary() ** 2, 0)
             
