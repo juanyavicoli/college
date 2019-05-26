@@ -310,6 +310,31 @@ class TestMatrix(unittest.TestCase):
             dummy = self.c.super_matrix(20, -999)
             dummy = self.d.super_matrix(-45, -45)
 
+    def test_duplicate(self):
+        self.assertEqual(self.a.duplicate(), self.a)
+        self.assertEqual(self.b.duplicate(), self.b)
+        self.assertEqual(self.c.duplicate(), self.c)
+        self.assertEqual(self.d.duplicate(), self.d)
+        self.assertEqual(self.e.duplicate(), self.e)
+        self.assertEqual(self.f.duplicate(), self.f)
+        self.assertEqual(self.g.duplicate(), self.g)
+        self.assertEqual(self.h.duplicate(), self.h)
+        self.assertEqual(self.i.duplicate(), self.i)
+        self.assertEqual(self.j.duplicate(), self.j)
+        self.assertEqual(self.k.duplicate(), self.k)
+
+        self.assertEqual(self.a.duplicate(), Matrix([[1]]))
+        self.assertEqual(self.b.duplicate(), Matrix([[2]]))
+        self.assertEqual(self.c.duplicate(), Matrix([[10]]))
+        self.assertEqual(self.d.duplicate(), Matrix([[1, 2], [3, 4]]))
+        self.assertEqual(self.e.duplicate(), Matrix([[10, 10], [10, 10]]))
+        self.assertEqual(self.f.duplicate(), Matrix([[12, 7, 4], [6, 8, 2]]))
+        self.assertEqual(self.g.duplicate(), Matrix([[24, -8, 0], [-1, 2, 2]]))
+        self.assertEqual(self.h.duplicate(), Matrix([[1, 2, 3], [4, 5, 6], [7, 8, 9]]))
+        self.assertEqual(self.i.duplicate(), Matrix([[5, 3, 8], [6, 1, 1], [9, 5, 7]]))
+        self.assertEqual(self.j.duplicate(), Matrix([[1, 2], [2, 3]]))
+        self.assertEqual(self.k.duplicate(), Matrix([[5, 6, 7], [6, 3, 2], [7, 2, 1]]))
+
     def test_is_square(self):
         self.assertEqual(self.a.is_square(), True)
         self.assertEqual(self.b.is_square(), True)
