@@ -305,6 +305,9 @@ class Matrix:
 
         return Matrix(resultant_rows)
 
+    def duplicate(self):
+        return Matrix(self.data())
+
     def is_square(self) -> bool:
         if self.rows() == self.cols():
             return True
