@@ -16,7 +16,7 @@ class TestMatrix(unittest.TestCase):
         self.i = Matrix([[5, 3, 8], [6, 1, 1], [9, 5, 7]])
         self.j = Matrix([[1, 2], [2, 3]])
         self.k = Matrix([[5, 6, 7], [6, 3, 2], [7, 2, 1]])
-        
+
         self.assertEqual(Matrix.identity(1), Matrix([[1]]))
         self.assertEqual(Matrix.identity(2), Matrix([[1, 0], [0, 1]]))
         self.assertEqual(Matrix.identity(3), Matrix([[1, 0, 0], [0, 1, 0], [0, 0, 1]]))
@@ -24,7 +24,7 @@ class TestMatrix(unittest.TestCase):
                                                      [0, 1, 0, 0],
                                                      [0, 0, 1, 0],
                                                      [0, 0, 0, 1]]))
-                                                     
+
         with self.assertRaises(ValueError):
             dummy = Matrix.identity(0)
             dummy = Matrix.identity(-1)
@@ -56,12 +56,12 @@ class TestMatrix(unittest.TestCase):
         self.assertEqual(self.a - self.c, Matrix([[-9]]))
         self.assertEqual(self.b - self.a, Matrix([[1]]))
         self.assertEqual(self.c - self.b, Matrix([[8]]))
-        
+
         self.assertEqual(self.d - self.e, Matrix([[-9, -8], [-7, -6]]))
         self.assertEqual(self.e - self.d, Matrix([[9, 8], [7, 6]]))
         self.assertEqual(self.g - self.f, Matrix([[12, -15, -4], [-7, -6, 0]]))
         self.assertEqual(self.h - self.i, Matrix([[-4, -1, -5], [-2, 4, 5], [-2, 3, 2]]))
-        
+
         with self.assertRaises(ValueError):
             dummy = self.d - self.a
             dummy = self.g - self.c
@@ -126,7 +126,7 @@ class TestMatrix(unittest.TestCase):
         self.assertNotEqual(self.g, self.h)
         self.assertNotEqual(self.h, self.i)
         self.assertNotEqual(self.i, self.a)
-        
+
     def test_data(self):
         self.assertEqual(self.a.data(), [[1]])
         self.assertEqual(self.b.data(), [[2]])
@@ -166,14 +166,14 @@ class TestMatrix(unittest.TestCase):
         self.assertEqual(self.b.inverse(), Matrix([[2]]))
         self.assertEqual(self.c.inverse(), Matrix([[10]]))
         self.assertEqual(self.d.inverse(), Matrix([[-2, 1], [3/2, -1/2]]))
-        self.assertEqual(self.i.inverse(), Matrix([[2/79, 19/79, -5/79], 
-                                                   [-33/79, -37/79, 43/79], 
+        self.assertEqual(self.i.inverse(), Matrix([[2/79, 19/79, -5/79],
+                                                   [-33/79, -37/79, 43/79],
                                                    [21/79, 2/79, -13/79]]))
         self.assertEqual(self.j.inverse(), Matrix([[-3, 2], [2, -1]]))
         self.assertEqual(self.k.inverse(), Matrix([[1/20, -2/5, 9/20],
                                                    [-2/5, 11/5, -8/5],
                                                    [9/20, -8/5, 21/20]]))
-        
+
         with self.assertRaises(ValueError):
             dummy = self.e.inverse()
             dummy = self.f.inverse()
@@ -289,7 +289,7 @@ class TestMatrix(unittest.TestCase):
 
             dummy = self.d.sub_matrix([0, 1], [0, 1])
             dummy = self.d.sub_matrix([1, 0], [1, 0])
-            
+
     def test_super_matrix(self):
         self.assertEqual(self.a.super_matrix(1, 0), Matrix([[1], [0]]))
         self.assertEqual(self.a.super_matrix(0, 1), Matrix([[1, 0]]))
@@ -303,7 +303,7 @@ class TestMatrix(unittest.TestCase):
         self.assertEqual(self.d.super_matrix(1, 0), Matrix([[1, 2], [3, 4], [0, 0]]))
         self.assertEqual(self.d.super_matrix(0, 1), Matrix([[1, 2, 0], [3, 4, 0]]))
         self.assertEqual(self.d.super_matrix(1, 1), Matrix([[1, 2, 0], [3, 4, 0], [0, 0, 0]]))
-        
+
         with self.assertRaises(ValueError):
             dummy = self.a.super_matrix(-1, 0)
             dummy = self.b.super_matrix(-15, 15)

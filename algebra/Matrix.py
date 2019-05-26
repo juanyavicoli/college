@@ -10,7 +10,7 @@ class Matrix:
 
         resultant_rows = []
         current_row = [0] * size
-        
+
         for i in range(size):
             resultant_rows.append(current_row.copy())
             resultant_rows[i][i] = 1
@@ -131,30 +131,30 @@ class Matrix:
     def inverse(self):
         if not self.is_square():
             raise ValueError("Matrix must be square.")
-            
+
         original_determinant = self.determinant()
-        
+
         if math.isclose(original_determinant, 0):
             raise ValueError("Determinant must be non-zero.")
-            
+
         if self.rows() == 1:
             return self
-            
+
         resultant_minors = []
         current_minors = []
-            
+
         # For each element in the matrix, we remove its
         # row and column, and store the resultant sub matrix's
         # determinant in our list of minors.
         for y in range(self.rows()):
             for x in range(self.cols()):
                 current_minors.append(self.sub_matrix([y], [x]).determinant())
-                
+
             resultant_minors.append(current_minors.copy())
             current_minors.clear()
-            
+
         alternator = 0
-        
+
         # The matrix of minors (should) have the same size
         # than this one has.
         for y in range(self.rows()):
@@ -162,18 +162,18 @@ class Matrix:
                 alternator = 1
             else:
                 alternator = -1
-        
+
             for x in range(self.cols()):
                 resultant_minors[y][x] *= alternator
                 alternator *= -1
-                
+
         # Generate the adjugate, which is the transpose of
         # the matrix of minors.
         resultant_matrix = Matrix(resultant_minors)
         resultant_matrix = resultant_matrix.transpose()
-        
+
         resultant_matrix *= 1 / original_determinant
-        
+
         return resultant_matrix
 
     def transpose(self):
@@ -281,30 +281,30 @@ class Matrix:
                     current_row.clear()
 
         return Matrix(resultant_rows)
-        
+
     def super_matrix(self, append_rows: int, append_cols: int):
         if append_rows < 0 or append_cols < 0:
             raise ValueError("Parameters must be positive or zero.")
-            
+
         resultant_rows = []
         current_row = []
         zeroed_row = [0] * (self.cols() + append_cols)
-            
+
         for y in range(self.rows()):
             for x in range(self.cols()):
                 current_row.append(self.__data[y][x])
-                
+
             for x in range(self.cols(), self.cols() + append_cols):
                 current_row.append(0)
-                
+
             resultant_rows.append(current_row.copy())
             current_row.clear()
-                
+
         for y in range(self.rows(), self.rows() + append_rows):
             resultant_rows.append(zeroed_row.copy())
-            
+
         return Matrix(resultant_rows)
-            
+
     def is_square(self) -> bool:
         if self.rows() == self.cols():
             return True
