@@ -52,6 +52,11 @@ class Complex:
     def imaginary(self) -> float:
         return self.__im
 
+    def modulus(self) -> float:
+        sum_of_squares = self.real() ** 2 + self.imaginary() ** 2
+
+        return math.sqrt(sum_of_squares)
+
     def conjugate(self):
         return Complex(self.real(), -self.imaginary())
 
