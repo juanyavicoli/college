@@ -1,4 +1,5 @@
 import unittest
+import math
 from Complex import Complex
 
 
@@ -75,6 +76,14 @@ class TestComplex(unittest.TestCase):
         self.assertEqual(self.d.imaginary(), 4)
         self.assertEqual(self.e.real(), -6)
         self.assertEqual(self.e.imaginary(), -1)
+
+    def test_modulus(self):
+        self.assertEqual(self.a.modulus(), math.sqrt(101))
+        self.assertEqual(self.b.modulus(), 5)
+        self.assertEqual(self.c.modulus(), math.sqrt(5))
+        self.assertEqual(self.d.modulus(), math.sqrt(32))
+        self.assertEqual(self.e.modulus(), math.sqrt(37))
+        self.assertEqual(self.f.modulus(), 15)
 
     def test_conjugate(self):
         self.assertEqual(self.a.conjugate(), Complex(10, -1))
