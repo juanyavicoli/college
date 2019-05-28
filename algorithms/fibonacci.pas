@@ -19,9 +19,7 @@ begin
             c := c + 1;
             
             if c <= 2 then
-                begin
-                    accumulated := x;
-                end
+                accumulated := x
             else
                 begin
                     accumulated := x + y;
