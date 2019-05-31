@@ -86,5 +86,15 @@ begin
     WriteLn('Minimum:');
     WriteLn(minimum);
 
+    // Now we make use of our functions.
+    maximum := max(max(first, second), third);
+    minimum := min(min(first, second), third);
+
+    WriteLn('Function maximum:');
+    WriteLn(maximum);
+
+    WriteLn('Function minimum:');
+    WriteLn(minimum);
+
 end.
 
