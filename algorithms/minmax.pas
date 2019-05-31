@@ -14,6 +14,29 @@ var
     minimum: real = 10000;
     maximum: real = -10000;
 
+
+function max(a, b: real): real;
+
+begin
+
+    if a >= b then
+        max := a
+    else
+        max := b;
+
+end;
+
+function min(a, b: real): real;
+
+begin
+
+    if a <= b then
+        min := a
+    else
+        min := b;
+
+end;
+
 begin
 
     ReadLn(first);
