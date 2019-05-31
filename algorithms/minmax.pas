@@ -11,8 +11,8 @@ var
     second: real;
     third: real;
 
-    min: real = 10000;
-    max: real = -10000;
+    minimum: real = 10000;
+    maximum: real = -10000;
 
 begin
 
@@ -23,45 +23,45 @@ begin
     if first >= second then
         if first >= third then
             begin
-                max := first;
+                maximum := first;
 
                 if second <= third then
-                    min := second
+                    minimum := second
                 else
-                    min := third
+                    minimum := third
             end
         else
             if second >= third then
                 begin
-                    max := second;
-                    min := third;
+                    maximum := second;
+                    minimum := third;
                 end
             else
                 begin
-                    max := third;
-                    min := second;
+                    maximum := third;
+                    minimum := second;
                 end
     else
         if second >= third then
             begin
-                max := second;
+                maximum := second;
 
                 if first <= third then
-                    min := first
+                    minimum := first
                 else
-                    min := third
+                    minimum := third
             end
         else
             begin
-                max := third;
-                min := first;
+                maximum := third;
+                minimum := first;
             end;
 
     WriteLn('Maximum:');
-    WriteLn(max);
+    WriteLn(maximum);
 
     WriteLn('Minimum:');
-    WriteLn(min);
+    WriteLn(minimum);
 
 end.
 
