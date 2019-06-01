@@ -156,10 +156,7 @@ begin
         if salesman_1_amount_total >= salesman_3_amount_total then
             salesman_top := 1
         else
-            if salesman_2_amount_total >= salesman_2_amount_total then
-                salesman_top := 2
-            else
-                salesman_top := 3
+            salesman_top := 3
     else
         if salesman_2_amount_total >= salesman_3_amount_total then
             salesman_top := 2
