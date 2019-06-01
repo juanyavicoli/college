@@ -54,16 +54,10 @@ begin
                     minimum := third
             end
         else
-            if second >= third then
-                begin
-                    maximum := second;
-                    minimum := third;
-                end
-            else
-                begin
-                    maximum := third;
-                    minimum := second;
-                end
+            begin
+                maximum := third;
+                minimum := second;
+            end
     else
         if second >= third then
             begin
