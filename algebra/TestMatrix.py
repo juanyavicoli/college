@@ -161,6 +161,19 @@ class TestMatrix(unittest.TestCase):
         self.assertEqual(self.h.cols(), 3)
         self.assertEqual(self.i.cols(), 3)
 
+    def test_opposite(self):
+        self.assertEqual(self.a.opposite(), Matrix([[-1]]))
+        self.assertEqual(self.b.opposite(), Matrix([[-2]]))
+        self.assertEqual(self.c.opposite(), Matrix([[-10]]))
+        self.assertEqual(self.d.opposite(), Matrix([[-1, -2], [-3, -4]]))
+        self.assertEqual(self.e.opposite(), Matrix([[-10, -10], [-10, -10]]))
+        self.assertEqual(self.f.opposite(), Matrix([[-12, -7, -4], [-6, -8, -2]]))
+        self.assertEqual(self.g.opposite(), Matrix([[-24, 8, 0], [1, -2, -2]]))
+        self.assertEqual(self.h.opposite(), Matrix([[-1, -2, -3], [-4, -5, -6], [-7, -8, -9]]))
+        self.assertEqual(self.i.opposite(), Matrix([[-5, -3, -8], [-6, -1, -1], [-9, -5, -7]]))
+        self.assertEqual(self.j.opposite(), Matrix([[-1, -2], [-2, -3]]))
+        self.assertEqual(self.k.opposite(), Matrix([[-5, -6, -7], [-6, -3, -2], [-7, -2, -1]]))
+
     def test_inverse(self):
         self.assertEqual(self.a.inverse(), Matrix([[1]]))
         self.assertEqual(self.b.inverse(), Matrix([[2]]))
