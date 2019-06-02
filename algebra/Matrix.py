@@ -128,6 +128,9 @@ class Matrix:
     def cols(self) -> int:
         return self.__cols
 
+    def opposite(self):
+        return self * -1
+
     def inverse(self):
         if not self.is_square():
             raise ValueError("Matrix must be square.")
