@@ -5,6 +5,22 @@ class Matrix:
 
     @staticmethod
     def identity(size: int):
+        """
+        Build a square identity matrix of the specified size.
+
+        Returns:
+            A square matrix following a similar form to:
+
+                1, 0, 0
+                0, 1, 0
+                0, 0, 1
+
+            depending on the size argument.
+
+        Raises:
+            ValueError: if size argument isn't positive.
+        """
+
         if size <= 0:
             raise ValueError("Size must be positive, non-zero.")
 
