@@ -47,9 +47,15 @@ class Complex:
         return "Complex(" + str(self.__re) + ", " + str(self.__im) + ")"
 
     def real(self) -> float:
+        """
+        Returns the real part of the complex.
+        """
         return self.__re
 
     def imaginary(self) -> float:
+        """
+        Returns the imaginary part of the complex.
+        """
         return self.__im
 
     def modulus(self) -> float:
@@ -58,6 +64,19 @@ class Complex:
         return math.sqrt(sum_of_squares)
 
     def conjugate(self):
+        """
+        Returns the conjugate of the complex, using
+        the following methodology:
+
+            original:   a + bi
+            conjugate:  a - bi
+
+        For example,
+
+            original:   4 + 5i
+            conjugate:  4 - 5i
+        """
+
         return Complex(self.real(), -self.imaginary())
 
     def reciprocal(self):
