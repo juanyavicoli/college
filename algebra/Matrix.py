@@ -228,6 +228,22 @@ class Matrix:
         return Matrix(resultant_rows)
 
     def trace(self) -> float:
+        """
+        Returns the sum of all the elements in the main diagonal.
+
+        For example,
+
+            1 2 3
+            4 5 6 --> 15
+            7 8 9
+
+            4 0 0
+            0 7 0 --> 12
+            0 0 1
+
+        Raises:
+            ValueError: if the matrix isn't square.
+        """
         if not self.is_square():
             raise ValueError("Matrix must be square.")
 
