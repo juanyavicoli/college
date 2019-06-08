@@ -255,6 +255,22 @@ class Matrix:
         return result
 
     def rank(self) -> int:
+        """
+        Returns the maximum number of linearly independent rows,
+        which, in other words, is the number of row vectors that
+        cannot be algebraically deduced from the combination of
+        one or more vectors of the same matrix.
+
+        For example, the matrix:
+
+            1 2 4 4
+            3 4 8 0
+            2 4 8 8
+
+        Has two linearly independent rows (1 and 2) and one linearly
+        dependent row (3, which is row 1 multiplied by scalar 2), its
+        rank is two.
+        """
         size = min(self.rows(), self.cols())
 
         keep_rows = []
