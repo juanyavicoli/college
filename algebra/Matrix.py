@@ -171,6 +171,45 @@ class Matrix:
     def opposite(self):
         return self * -1
 
+    def checkerboard(self):
+        alternator = 0
+        data = self.data()
+
+        for y in range(self.rows()):
+            if y % 2 == 0:
+                alternator = 1
+            else:
+                alternator = -1
+
+            for x in range(self.cols()):
+                data[y][x] *= alternator
+                alternator *= -1
+
+        return Matrix(data)
+
+    def cofactors(self):
+        if not self.is_square():
+            raise ValueError("Matrix must be square.")
+
+        resultant_minors = []
+        current_minors = []
+
+        # For each element in the matrix, we remove its
+        # whole row and column, and store the determinant
+        # of what's left in our list of minors.
+        for y in range(self.rows()):
+
+            for x in range(self.cols()):
+                current_minors.append(self.sub_matrix([y], [x]).determinant())
+
+            resultant_minors.append(current_minors.copy())
+            current_minors.clear()
+
+        resultant_matrix = Matrix(resultant_minors)
+        resultant_matrix = resultant_matrix.checkerboard()
+
+        return resultant_matrix
+
     def inverse(self):
         if not self.is_square():
             raise ValueError("Matrix must be square.")
