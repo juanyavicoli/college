@@ -222,36 +222,9 @@ class Matrix:
         if self.rows() == 1:
             return self
 
-        resultant_minors = []
-        current_minors = []
-
-        # For each element in the matrix, we remove its
-        # row and column, and store the resultant sub matrix's
-        # determinant in our list of minors.
-        for y in range(self.rows()):
-            for x in range(self.cols()):
-                current_minors.append(self.sub_matrix([y], [x]).determinant())
-
-            resultant_minors.append(current_minors.copy())
-            current_minors.clear()
-
-        alternator = 0
-
-        # The matrix of minors (should) have the same size
-        # than this one has.
-        for y in range(self.rows()):
-            if y % 2 == 0:
-                alternator = 1
-            else:
-                alternator = -1
-
-            for x in range(self.cols()):
-                resultant_minors[y][x] *= alternator
-                alternator *= -1
-
-        # Generate the adjugate, which is the transpose of
-        # the matrix of minors.
-        resultant_matrix = Matrix(resultant_minors)
+        # Generate the adjugate matrix, which is the transpose
+        # of the matrix of minors.
+        resultant_matrix = self.cofactors()
         resultant_matrix = resultant_matrix.transpose()
 
         resultant_matrix *= 1 / original_determinant
