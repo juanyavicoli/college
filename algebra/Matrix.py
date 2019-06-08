@@ -49,6 +49,19 @@ class Matrix:
                 raise ValueError("Matrix isn't uniform.")
 
     def __add__(self, other):
+        """
+        Adds each element in this matrix with its corresponding
+        element in the other matrix.
+
+        For example,
+
+            1 2   5 7   1+5 2+7   6 9
+            3 4 + 0 1 = 3+0 4+1 = 3 5
+            5 6   1 3   5+1 6+3   6 9
+
+        Raises
+            ValueError: when the matrices aren't of the same size.
+        """
         if self.rows() != other.rows() or self.cols() != other.cols():
             raise ValueError("Matrices must be of same dimensions.")
 
@@ -81,6 +94,17 @@ class Matrix:
         return Matrix(resultant_rows)
 
     def __mul__(self, other: float):
+        """
+        Multiplies each element in this matrix by a scalar,
+        and returns a new matrix with these values.
+
+        For example,
+
+            1 2 3       2 4 6
+            3 2 1 * 2 = 6 4 2
+            0 4 2       0 8 4
+
+        """
         resultant_rows = []
         current_row = []
 
