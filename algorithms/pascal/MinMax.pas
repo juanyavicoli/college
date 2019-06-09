@@ -4,7 +4,7 @@
 // I will assume that values are between -10000
 // and 10000
 
-program minmax;
+program MinMax;
 
 var
     first: real;

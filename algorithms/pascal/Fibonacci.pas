@@ -1,7 +1,7 @@
 // This exercise was written in class, previous to an introduction
 // to functions. I don't own this code, it belongs to my professor.
 
-program fibonacci;
+program Fibonacci;
 
 var
     n, c, accumulated : integer;

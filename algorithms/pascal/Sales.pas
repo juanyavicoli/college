@@ -20,7 +20,7 @@
 
 // I will also assume that bills are in the range $-10000 to $10000
 
-program sales;
+program Sales;
 
 var
     bill_number: integer = 0;
