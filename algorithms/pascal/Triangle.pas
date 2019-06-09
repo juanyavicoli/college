@@ -14,8 +14,8 @@ procedure fixed_triangle;
         WriteLn('*       *');
 
     end;
-procedure triangle(size: Integer);
 
+procedure variable_triangle(size: Integer);
     var
         x: Integer;
         c: Integer;
@@ -45,8 +45,8 @@ procedure triangle(size: Integer);
 begin
 
     fixed_triangle();
-    triangle(3);
-    triangle(4);
+    variable_triangle(3);
+    variable_triangle(4);
 
 end.
 
