@@ -1,7 +1,7 @@
 // PROBLEM: Write a program that displays a triangle
 // to the console using a procedure.
 
-program proc;
+program Triangle;
 
 // This procedure was proposed by our professor. It
 // simply illustrates how to define and use a procedure.
