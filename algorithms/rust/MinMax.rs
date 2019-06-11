@@ -1,8 +1,7 @@
 fn min(a: i64, b: i64) -> i64 {
 	if a <= b {
 		a
-	}
-	else {
+	} else {
 		b
 	}
 }
@@ -10,8 +9,7 @@ fn min(a: i64, b: i64) -> i64 {
 fn max(a: i64, b: i64) -> i64 {
 	if a >= b {
 		a
-	}
-	else {
+	} else {
 		b
 	}
 }
