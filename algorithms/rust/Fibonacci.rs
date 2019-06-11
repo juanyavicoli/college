@@ -1,6 +1,6 @@
 fn recursive_fibonacci(n: u64) -> u64 {
-	if n < 2 {
-		n
+    if n < 2 {
+        n
     } else {
         recursive_fibonacci(n - 1) + recursive_fibonacci(n - 2)
     }
