@@ -1,6 +1,6 @@
 def recursive_fibonacci(n: int) -> int:
     if n < 0:
-        raise ValueError("n argument must non-negative.")
+        raise ValueError("n argument must be non-negative.")
     elif n < 2:
         return n
     else:
