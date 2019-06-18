@@ -1,0 +1,36 @@
+program dni;
+var
+    vdoc:integer;
+    vgen:char;
+    vedad:integer;
+    vcontf:integer;
+    vcontm:integer;
+    vprom:real;
+    vauxedad:integer;
+    vcontedad:integer;
+    votro:char;
+begin
+    vcontf:=0;
+    vcontm:=0;
+    vcontedad:=0;
+    vauxedad:=0;
+    readln(votro);
+         while votro<>'N' do
+            begin
+                readln(vdoc);
+                readln(vedad);
+                readln(vgen);
+                    if vgen=F then
+                        vcontf:=vcontf+1;
+                    else
+                        vcontm:=vcontm+1;
+                        vcontedad:=vcontedad+1;
+                        vauxedad:=vauxedad+vedad;
+                    end if;
+             end;
+     vprom:=vauxedad/vcontedad;
+    
+     writeln(vcontm);
+     writeln(vcontf);
+     writeln(vprom);
+end.
